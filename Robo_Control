@@ -1,0 +1,85 @@
+import random, pygame, sys
+from pygame.locals import *
+import os
+import time
+
+FPS = 15
+WINDOWWIDTH = 100
+WINDOWHEIGHT = 100
+
+
+UP = 'up'
+DOWN = 'down'
+LEFT = 'left'
+RIGHT = 'right'
+
+
+def main():
+    global FPSCLOCK, DISPLAYSURF, BASICFONT
+
+    pygame.init()
+    FPSCLOCK = pygame.time.Clock()
+    DISPLAYSURF = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+    BASICFONT = pygame.font.Font('freesansbold.ttf', 18)
+    pygame.display.set_caption('ROBOT')
+
+    
+    while True:
+        runGame()
+        
+def runGame():
+    # Set a random start point.
+    while True: # main game loop
+        for event in pygame.event.get(): # event handling loop
+            if event.type == QUIT:
+                terminate()
+                
+            elif event.type == KEYDOWN:
+                if event.key == K_RIGHT:
+                    print "left"
+                    os.system("irsend SEND_ONCE Robot KEY_RIGHT")
+                    
+                elif event.key == K_LEFT:
+                    print "right"
+                    os.system("irsend SEND_ONCE Robot KEY_LEFT")
+                    
+                elif event.key == K_UP:
+                    print "Forward"
+                    os.system("irsend SEND_ONCE Robot KEY_UP")
+                    
+                elif event.key == K_DOWN:
+                    print "Back"
+                    os.system("irsend SEND_ONCE Robot KEY_DOWN")
+
+                elif event.key == K_SPACE:
+                    print "STOP"
+                    os.system("irsend SEND_ONCE Robot KEY_STOP")
+
+                elif event.key == K_d:
+                    print "Dance Baby"
+                    os.system("irsend SEND_ONCE Robot KEY_D")
+
+                elif event.key == K_y:
+                    print "Say Yes"
+                    os.system("irsend SEND_ONCE Robot KEY_R")
+
+                elif event.key == K_l:
+                    print "Say Yes"
+                    os.system("irsend SEND_ONCE Robot KEY_L")
+
+                elif event.key == K_n:
+                    print "Say No"
+                    os.system("irsend SEND_ONCE Robot KEY_P")   
+
+                                    
+                elif event.key == K_ESCAPE:
+                    terminate()
+
+        
+
+
+    
+    
+
+if __name__ == '__main__':
+    main()
