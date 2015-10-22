@@ -4,8 +4,8 @@ import os
 import time
 
 FPS = 15
-WINDOWWIDTH = 100
-WINDOWHEIGHT = 100
+WINDOWWIDTH = 25
+WINDOWHEIGHT = 25
 
 
 UP = 'up'
